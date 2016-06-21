@@ -9,7 +9,7 @@
 
 	$dbhost = "localhost";	
 	$dbuser = "root";
-	$dbpass = "";
+	$dbpass = "root";
 	$dbname = "myDB";
 
 	$conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
