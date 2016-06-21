@@ -42,6 +42,6 @@
 
 	}else{
 		//throw an error	
-		echo "Error: " . $insert_database . "<br>" . mysqli_error($conn);
+		echo " Oops! Something went wrong! Please try again!";
  	}
 ?>

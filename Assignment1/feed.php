@@ -52,7 +52,7 @@
 	echo "<p><input type='submit'></p>";	
 	echo "</form>";
 	echo "<br>";
-//} //added here
+
 	$result_comments = mysqli_query($conn, "SELECT * FROM comments WHERE PID='$row[0]'");
 	$num_rows_comments = mysqli_num_rows($result_comments);
 
@@ -62,15 +62,9 @@
 		echo "$row_comments[3] commented $row_comments[1]";
 		echo "<form action='comments.php' method='POST'> <input type='hidden' name='PID' value='$row[0]'> </form>";
 		echo "<br>";
-	}	//2nd added here
+	}	
 
-	//echo "<form method='POST' action='comments.php'>";
-	//echo "<p><textarea name='content'>Write comment...</textarea></p>";
-	//echo "<input type='hidden' name='UID' value='$row[2]'>";
-	//echo "<input type='hidden' name='PID' value='$row[0]'>";
-	//echo "<p><input type='submit'></p>";	
-	//echo "</form>";
-	//echo "<br>";
+
 
 	}
 

@@ -34,7 +34,7 @@
 		header('Location: feed.php');
 	}else{
 
-		echo "Error: " . $result_insert . "<br>" . mysqli_error($conn);
+		echo " Oops! Something went wrong! Please try again!";
 	}
 
  ?>
