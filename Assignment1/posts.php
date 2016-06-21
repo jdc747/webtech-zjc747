@@ -3,16 +3,19 @@
 	session_start();
 
 	include('database.php');
+	include('functions.php');
 
 
 	//Get data from the form
-	$content = $_POST['content'];
+	$content =  $_POST['content'];
 	$UID = $_POST['UID'];
 
 	//connect to DB
 	$conn = connect_db();
 	$result = mysqli_query($conn, "SELECT * FROM users WHERE id = '$UID'");
 	$row = mysqli_fetch_assoc($result);
+
+	$content = sanitizeString($conn, $content);
 
 	//Fetch User information	
 	$name = $row["Name"];

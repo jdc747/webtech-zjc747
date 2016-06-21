@@ -12,5 +12,12 @@ function destroySession()
     session_destroy();
 }
 
+function sanitizeString($conn, $var) {
+	$var = strip_tags($var);
+	$var = htmlentities($var);
+	$var = stripslashes($var);
+	return mysqli_real_escape_string($conn, $var);
+}
+
 ?>
 

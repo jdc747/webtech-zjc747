@@ -5,6 +5,7 @@
 	session_start();	
 
 	include('database.php');
+	include('functions.php');
 
 	$dbhost = "localhost";	
 	$dbuser = "root";
@@ -14,16 +15,16 @@
 	$conn = connect_db();
 	
 
-	$username = $_POST['username'];
-	$password = $_POST['password'];
-	$name = $_POST['name'];
-	$email = $_POST['email'];
-	$dob = $_POST['dob'];
-	$gender = $_POST['gender'];
-	$verification_question = $_POST['verification_question'];
-	$verification_answer = $_POST['verification_answer'];
-	$location = $_POST['location'];
-	$profile_pic = $_POST['profile_pic'];
+	$username = sanitizeString($conn, $_POST['username']);
+	$password = sanitizeString($conn, $_POST['password']);
+	$name = sanitizeString($conn, $_POST['name']);
+	$email = sanitizeString($conn, $_POST['email']);
+	$dob = sanitizeString($conn, $_POST['dob']);
+	$gender = sanitizeString($conn, $_POST['gender']);
+	$verification_question = sanitizeString($conn, $_POST['verification_question']);
+	$verification_answer = sanitizeString($conn, $_POST['verification_answer']);
+	$location = sanitizeString($conn, $_POST['location']);
+	$profile_pic = sanitizeString($conn, $_POST['profile_pic']);
 
 	$phash = password_hash($password, PASSWORD_DEFAULT);
 

@@ -24,14 +24,17 @@
 	if($num_of_rows > 0){
 
 		$row = mysqli_fetch_assoc($result);
-		if(password_verify($password, $row["password"])) {
+		if(password_verify($password, $row["Password"])) {
 			$_SESSION["username"] = $username;
 			header("Location: feed.php");
+	
 
 
 	}else{
 		//else ask to login again..	
 		echo "Invalid password! Try again!";
+
+		}
 
 	}
 ?>

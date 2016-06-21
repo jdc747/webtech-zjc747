@@ -17,7 +17,7 @@
 	//user information 
 	$row = mysqli_fetch_assoc($result);
 
-	echo "<h1>Welcome".$row['Name']."!</h1>";
+	echo "<h1>Welcome ".$row['Name']."!</h1>";
 	echo "<img src='".$row['profile_pic']."'>";
 	echo "<hr>";
 
@@ -26,7 +26,6 @@
 	echo "<input type='hidden' name='UID' value='$row[id]'>";
 	echo "<p><input type='submit'></p>";	
 	echo "</form>";
-
 	echo "<br>";
 
 	$result_posts = mysqli_query($conn, "SELECT * FROM posts");
@@ -44,7 +43,37 @@
 		echo "$row[3] said $row[1] ($row[5])";
 		echo "<form action='likes.php' method='POST'> <input type='hidden' name='PID' value='$row[0]'> <input type='submit' value='Like'></form>";
 		echo "<br>";
+
+
+	echo "<form method='POST' action='comments.php'>";
+	echo "<p><textarea name='content'>Write comment...</textarea></p>";
+	echo "<input type='hidden' name='UID' value='$row[2]'>";
+	echo "<input type='hidden' name='PID' value='$row[0]'>";
+	echo "<p><input type='submit'></p>";	
+	echo "</form>";
+	echo "<br>";
+//} //added here
+	$result_comments = mysqli_query($conn, "SELECT * FROM comments WHERE PID='$row[0]'");
+	$num_rows_comments = mysqli_num_rows($result_comments);
+
+	//show comments
+	for($j=0; $j < $num_rows_comments; $j++){
+		$row_comments = mysqli_fetch_row($result_comments);
+		echo "$row_comments[3] commented $row_comments[1]";
+		echo "<form action='comments.php' method='POST'> <input type='hidden' name='PID' value='$row[0]'> </form>";
+		echo "<br>";
+	}	//2nd added here
+
+	//echo "<form method='POST' action='comments.php'>";
+	//echo "<p><textarea name='content'>Write comment...</textarea></p>";
+	//echo "<input type='hidden' name='UID' value='$row[2]'>";
+	//echo "<input type='hidden' name='PID' value='$row[0]'>";
+	//echo "<p><input type='submit'></p>";	
+	//echo "</form>";
+	//echo "<br>";
+
 	}
+
 
 ?>
 
